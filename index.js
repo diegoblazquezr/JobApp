@@ -1,0 +1,25 @@
+const express = require("express");
+const app = express(); // Initialize server
+const port = 3000;
+
+// Import Middlewares
+const morgan = require('./middlewares/morgan');
+
+// Middlewares
+app.use(morgan(':method :url :status - :response-time ms :body'));
+
+// Routes
+const webRoutes = require("./routes/web.routes");
+
+// View engine setup
+app.set('view engine', 'pug');
+app.set('views', './views');
+
+app.use(express.static('public')); // Serve static files
+
+// API Routes
+app.use('/', webRoutes);
+
+app.listen(port, () => {
+    console.log(`Example app listening on http://localhost:${port}`);
+});

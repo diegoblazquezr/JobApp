@@ -1,0 +1,19 @@
+doctype html
+html(lang="en")
+    head
+        meta(charset="UTF-8")
+        meta(http-equiv="X-UA-Compatible", content="IE=edge")
+        meta(name="viewport", content="width=device-width, initial-scale=1.0")
+        link(rel="stylesheet", href="/css/styles.css")
+        title Home
+    body
+        include ./header.pug
+        main
+            h1 Film App - Home
+            section
+                h3 Buscar película por título
+                form(action='/film/:title' method='post')
+                    input#title(type='text' name='title' placeholder='Type a movie title')
+                    input(type='submit' value='Buscar')
+        include ./footer.pug
+        //- script(src="/js/scripts.js")
