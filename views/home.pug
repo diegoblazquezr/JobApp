@@ -13,7 +13,22 @@ html(lang="en")
             section
                 h3 Buscar película por título
                 form(action='/film/:title' method='post')
-                    input#title(type='text' name='title' placeholder='Type a movie title')
+                    input#title(type='text' name='title' placeholder='Search for a job offer')
                     input(type='submit' value='Buscar')
+                section
+                    if jobs.length
+                        each job in jobs
+                            article
+                                p Title: #{job.title}
+                                p Description: #{job.description}
+                                p Skills:
+                                each skill in job.skills
+                                    div
+                                        p #{skill}
+                                p Client Location: #{job.clientLocation}
+                                a(href=`${job.url}` target='_blank')
+                                    button(type=button) Visit Offer                              
+
+                
         include ./footer.pug
         //- script(src="/js/scripts.js")
