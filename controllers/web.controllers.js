@@ -1,9 +1,11 @@
 const scraper = require('../utils/scraper');
+const urlToptal = 'https://www.toptal.com/freelance-jobs/developers/jobs/';
+const urlFreelancer = 'https://www.freelancer.es/jobs/php_html_css_javascript_nodejs_java/?featured=true&languages=en';
 
 const getHome = async (req, res) => {
     try {
         // ---Descomenta las 2 siguientes líneas para hacer scraping---
-        let jobs = await scraper.scrap("https://www.toptal.com/freelance-jobs/developers/jobs/");
+        let jobs = await scraper.scrap(urlToptal, urlFreelancer);
         res.status(200).render("home.pug", { jobs });
     } catch (error) {
         res.status(404).json({})
