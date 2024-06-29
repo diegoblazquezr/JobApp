@@ -9,16 +9,16 @@ html(lang="en")
     body
         include ./header.pug
         main
-            h1 Film App - Home
+            h1 JobApp
             section
-                h3 Buscar película por título
-                form(action='/film/:title' method='post')
-                    input#title(type='text' name='title' placeholder='Search for a job offer')
-                    input(type='submit' value='Buscar')
-                section
+                h3 Encuentra tu próximo proyecto freelance
+                article
+                label(for="searchTitle") Busca por título
+                    input#searchTitle(type='text' name='searchTitle' placeholder='Busca por título...')
+                section#jobsContainer
                     if jobs.length
                         each job in jobs
-                            article
+                            article(data-jobTitle=`${job.title}`)
                                 p Title: #{job.title}
                                 p Description: #{job.description}
                                 p Skills:
@@ -31,4 +31,7 @@ html(lang="en")
 
                 
         include ./footer.pug
-        //- script(src="/js/scripts.js")
+
+        script.
+            const jobs = !{JSON.stringify(jobs)};
+        script(src="/js/scripts.js")
