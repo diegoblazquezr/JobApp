@@ -1,3 +1,25 @@
-header
-    h1 Job APP
-    div Hamburguesa
+header.navbar
+    section.nav-brand
+        h1 Job App
+    section
+        ul.nav-menu
+            li.nav-item
+                a(href="./" class="nav-link") Home
+            li.nav-item
+                a(href="./signup" class="nav-link loggedout") Signup
+            li.nav-item
+                a(href="./login" class="nav-link loggedout") Login
+            li.nav-item
+                a(href="./favorites" class="nav-link loggedin") Favorites
+            li.nav-item
+                a(href="./profile" class="nav-link loggedin") Profile
+            li.nav-item
+                a(href="./users" class="nav-link adminloggedin") Users
+            li.nav-item
+                a(href="./dashboard" class="nav-link adminloggedin") Dashboard
+            li.nav-item
+                a(class="nav-link loggedin") Logout
+        div.hamburger
+            span.bar
+            span.bar
+            span.bar
