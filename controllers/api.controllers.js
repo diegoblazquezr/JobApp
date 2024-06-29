@@ -1,4 +1,3 @@
-//const { response } = require('express');
 const jobService = require('../services/jobs.services');
 const { validationResult } = require("express-validator");
 
@@ -26,11 +25,6 @@ const postLogout = async (req, res) => {
 const listJobsController = async (req, res) => {
     let jobs;
     try {
-        // Validate request
-        const errors = validationResult(req);
-        if (!errors.isEmpty()) {
-            return res.status(400).json({ errors: errors.array() });
-        }
         jobs = await jobService.listJobs();
         res.status(200).json(jobs); // [] con los jobs encontrados
     } catch (error) {
@@ -44,10 +38,10 @@ const createJobController = async (req, res) => {
     if (!errors.isEmpty()) {
         return res.status(400).json({ errors: errors.array() });
     }
-    const { title, description, skills, client_location } = req.body;
-    if (title && description && skills && client_location) {
+    const { title, description, skills, client_location, url, source, status } = req.body;
+    if (title && description && skills && client_location && url && source && status !== undefined) {
         try {
-            const response = await jobService.createJob(title, description, skills, client_location);
+            const response = await jobService.createJob(title, description, skills, client_location, url, source, status);
             res.status(201).json({
                 "items_created": response,
                 data: req.body
@@ -59,6 +53,17 @@ const createJobController = async (req, res) => {
         res.status(400).json({ error: "Missing fields" });
     }
 };
+
+//comprobacion postman
+// {
+//     "title": "Experienced Virtual Assistant for Creating Shopify Landing/Product Pages",
+//     "description": "We are looking for an experienced virtual assistant who can help us create stunning landing and product pages on Shopify for our multiple e-commerce brands.",
+//     "skills": "Shopify, Web Design, Data Entry",
+//     "client_location": "United States",
+//     "url": "www.google.com",
+//     "source": "scraping",
+//     "status": false
+// }
 
 const updateJobController = async (req, res) => {
     // Validate request
@@ -75,6 +80,18 @@ const updateJobController = async (req, res) => {
         res.status(500).json({ error: error.message });
     }
 };
+//comprobacion postman
+//http://localhost:3000/api/jobs?title=Experienced Virtual Assistant for Creating Shopify Landing/Product Pages
+
+// {
+//     "title": "Experienced Virtual Assistant for Creating Shopify Landing/Product Pages",
+//     "description": "We are looking for an experienced virtual assistant who can help us create stunning landing and product pages on Shopify for our multiple e-commerce brands.",
+//     "skills": "Shopify, Web Design, Data Entry",
+//     "client_location": "United States",
+//     "url": "www.google.com",
+//     "source": "scraping",
+//     "status": false
+// }
 
 const deleteJobController = async (req, res) => {
     // Validate request
@@ -122,3 +139,5 @@ module.exports = {
     // recoverPassword,
     // restorePassword
 }
+
+

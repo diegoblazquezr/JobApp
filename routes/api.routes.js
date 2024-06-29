@@ -1,6 +1,6 @@
 const apiController = require('../controllers/api.controllers');
 const router = require('express').Router();
-const { validateCreateJob, validateDeleteJob, validateListJobs, validateUpdateJob } = require("../validators/jobs.validators");
+const { validateCreateJob, validateUpdateJob, validateDeleteJob } = require("../validators/jobs.validators");
 
 // GET http://localhost::3000/
 // router.post("/api/user", apiController.postUser);
@@ -8,10 +8,10 @@ const { validateCreateJob, validateDeleteJob, validateListJobs, validateUpdateJo
 // router.delete("/api/user", apiController.deleteUser);
 // router.post("/api/login", apiController.postLogin);
 // router.post("/api/logout", apiController.postLogout);
-router.get('/',validateListJobs, apiController.listJobs);
-router.post('/',validateCreateJob, apiController.createJobController);
-router.put('/',validateUpdateJob, apiController.updateJobController);
-router.delete('/',validateDeleteJob, apiController.deleteJobController);
+router.get('/', apiController.listJobsController);
+router.post('/', validateCreateJob, apiController.createJobController);
+router.put('/', validateUpdateJob, apiController.updateJobController);
+router.delete('/', validateDeleteJob, apiController.deleteJobController);
 // router.post("/api/favorites", apiController.postFavorites);
 // router.delete("/api/favorites", apiController.deleteFavorites);
 // router.get("/recoverpassword", apiController.recoverPassword);

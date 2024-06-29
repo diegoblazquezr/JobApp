@@ -9,6 +9,7 @@ const morgan = require('./middlewares/morgan');
 app.use(morgan(':method :url :status - :response-time ms :body'));
 
 // Routes
+const apiRoutes = require("./routes/api.routes");
 const webRoutes = require("./routes/web.routes");
 
 // View engine setup
@@ -16,10 +17,12 @@ app.set('view engine', 'pug');
 app.set('views', './views');
 
 app.use(express.static('public')); // Serve static files
+app.use(express.json()); // Habilito recepción de JSON en servidor
 
 // API Routes
+app.use('/api/jobs',apiRoutes); //checkear url
 app.use('/', webRoutes);
 
 app.listen(port, () => {
-    console.log(`Example app listening on http://localhost:${port}`);
+    console.log(`Job App listening on http://localhost:${port}`);
 });

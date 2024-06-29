@@ -12,7 +12,7 @@ const listJobs = async () => {
     }
 };
 
-const createJob = async (title, description, skills, client_location, url, source) => {
+const createJob = async (title, description, skills, client_location, url, source, status) => {
     try {
         const job = new Job({
             title,
@@ -20,7 +20,8 @@ const createJob = async (title, description, skills, client_location, url, sourc
             skills,
             client_location,
             url,
-            source
+            source,
+            status
         });
 
         const result = await job.save();
@@ -62,16 +63,19 @@ module.exports = {
     deleteJob
 };
 
-//createJob('Twitter embed from website shared to twitter','having issue with embedding correctly an image into our twitter share . see screenhots where image is missing, quick and easy task, looking forward to hearing from you' 'Twitter/X, HTML, JavaScript', 'Spain');
+// createJob('Twitter embed from website shared to twitter','having issue with embedding correctly an image into our twitter share . see screenhots where image is missing, quick and easy task, looking forward to hearing from you', 'Twitter/X, HTML, JavaScript', 'Spain', 'hola.com', 'scraping', 'true');
 
-//listJobs();
-/*
-updateJob({title: 'Twitter embed from website shared to twitter'},
-const j = new Job({
-    title: "Experienced Virtual Assistant for Creating Shopify Landing/Product Pages",
-    description: "We are looking for an experienced virtual assistant who can help us create stunning landing and product pages on Shopify for our multiple e-commerce brands.",
-    skills: "Shopify, Web Design, Data Entry",
-    client_location: "United States"
-}););
-*/
-// deleteJob("Experienced Virtual Assistant for Creating Shopify Landing/Product Pages");
+// listJobs();
+
+// updateJob({title: 'Twitter embed from website shared to twitter'},
+// {
+//     title: "Experienced Virtual Assistant for Creating Shopify Landing/Product Pages",
+//     description: "We are looking for an experienced virtual assistant who can help us create stunning landing and product pages on Shopify for our multiple e-commerce brands.",
+//     skills: "Shopify, Web Design, Data Entry",
+//     client_location: "United States",
+//     url: 'hola.com',
+//     source: 'scraping',
+//     status: false
+// });
+
+//deleteJob("Experienced Virtual Assistant for Creating Shopify Landing/Product Pages");

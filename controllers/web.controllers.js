@@ -1,9 +1,14 @@
+const { createJob } = require('../services/jobs.services');
 const scraper = require('../utils/scraper');
+const apiController = require('./api.controllers');
 
 const getHome = async (req, res) => {
     try {
         // ---Descomenta las 2 siguientes líneas para hacer scraping---
         let jobs = await scraper.scrap("https://www.toptal.com/freelance-jobs/developers/jobs/");
+        // jobs.forEach(job => {
+        //     createJob(job);
+        // })
         res.status(200).render("home.pug", { jobs });
     } catch (error) {
         res.status(404).json({})
