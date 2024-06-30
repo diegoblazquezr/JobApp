@@ -16,7 +16,7 @@ const extractProductDataToptal = async (url, browser) => {
         //skills
         toptalData['skills'] = await page.$$eval('.flex.flex-wrap.gap-2 > li', data => data.map(a => a.innerText));
         //localizacion cliente
-        toptalData['clientLocation'] = await page.$eval('.paragraph-xs.text-gray-700:nth-child(4) > p', p => p.innerText)
+        toptalData['client_location'] = await page.$eval('.paragraph-xs.text-gray-700:nth-child(4) > p', p => p.innerText)
         //link al job
         toptalData['url'] = url;
 
@@ -48,7 +48,7 @@ const extractProductDataFreelancer = async (url, browser) => {
         skills = skills.slice(0, 3)
         freelancerData['skills'] = skills
         //localizacion cliente
-        freelancerData['clientLocation'] = await page.$eval('app-project-view-logged-out-client-info > div:nth-child(2) > fl-text > div', location => location.innerText)
+        freelancerData['client_location'] = await page.$eval('app-project-view-logged-out-client-info > div:nth-child(2) > fl-text > div', location => location.innerText)
         //link al job
         freelancerData['url'] = url;
 
@@ -101,7 +101,7 @@ const scrap = async (url1, url2) => {
         const tmpurls2 = await page2.$$eval('a[class="JobSearchCard-primary-heading-link"]', data => data.map(a => a.href))
         const urls2 = await tmpurls2.filter((link, index) => { return tmpurls2.indexOf(link) === index })
         console.log("url capuradas", urls2)
-        const urlsSlice2 = urls2.slice(0, 3);
+        const urlsSlice2 = urls2.slice(0, 0);
 
         console.log(`${urlsSlice2.length} links encontrados`);
         console.log(urlsSlice2);
