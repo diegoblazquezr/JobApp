@@ -20,8 +20,8 @@ app.use(express.static('public')); // Serve static files
 app.use(express.json()); // Habilito recepción de JSON en servidor
 
 // API Routes
-app.use('/api/jobs',apiRoutes); //checkear url
 app.use('/', webRoutes);
+app.use('/api/jobs', apiRoutes);
 
 app.listen(port, () => {
     console.log(`Job App listening on http://localhost:${port}`);

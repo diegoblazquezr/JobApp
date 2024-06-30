@@ -1,17 +1,5 @@
 const Job = require('../models/jobs.model');
 
-const listJobs = async () => {
-    try {
-        const jobs = await Job
-            .find()
-            .select('title description skills client_location url source -_id')
-        console.log(jobs);
-        return jobs;
-    } catch (error) {
-        console.log('Error listing jobs:', error);
-    }
-};
-
 const createJob = async (title, description, skills, client_location, url, source, status) => {
     try {
         const job = new Job({
@@ -23,7 +11,6 @@ const createJob = async (title, description, skills, client_location, url, sourc
             source,
             status
         });
-
         const result = await job.save();
         console.log(result);
         return result;
@@ -31,6 +18,20 @@ const createJob = async (title, description, skills, client_location, url, sourc
         console.log('Error creating job:', error);
     }
 };
+// createJob('Twitter embed from website shared to twitter','having issue with embedding correctly an image into our twitter share . see screenhots where image is missing, quick and easy task, looking forward to hearing from you', 'Twitter/X, HTML, JavaScript', 'Spain', 'hola.com', 'scraping', 'true');
+
+const readJobs = async () => {
+    try {
+        const jobs = await Job
+            .find()
+            .select('title description skills client_location url source status -_id')
+        console.log(jobs);
+        return jobs;
+    } catch (error) {
+        console.log('Error listing jobs:', error);
+    }
+};
+// readJobs();
 
 const updateJob = async (filter, update) => {
     try {
@@ -44,29 +45,6 @@ const updateJob = async (filter, update) => {
         console.log('Cannot update job, error:', error)
     }
 };
-
-const deleteJob = async (filter) => {
-    try {
-        const removedJob = await Job
-            .deleteOne({ 'title': filter });
-        console.log(removedJob);
-        return removedJob;
-    } catch (error) {
-        console.log('Error deleting job:', error);
-    }
-};
-
-module.exports = {
-    listJobs,
-    createJob,
-    updateJob,
-    deleteJob
-};
-
-// createJob('Twitter embed from website shared to twitter','having issue with embedding correctly an image into our twitter share . see screenhots where image is missing, quick and easy task, looking forward to hearing from you', 'Twitter/X, HTML, JavaScript', 'Spain', 'hola.com', 'scraping', 'true');
-
-// listJobs();
-
 // updateJob({title: 'Twitter embed from website shared to twitter'},
 // {
 //     title: "Experienced Virtual Assistant for Creating Shopify Landing/Product Pages",
@@ -78,4 +56,21 @@ module.exports = {
 //     status: false
 // });
 
+const deleteJob = async (filter) => {
+    try {
+        const removedJob = await Job
+            .deleteOne({ 'title': filter });
+        console.log(removedJob);
+        return removedJob;
+    } catch (error) {
+        console.log('Error deleting job:', error);
+    }
+};
 //deleteJob("Experienced Virtual Assistant for Creating Shopify Landing/Product Pages");
+
+module.exports = {
+    createJob,
+    readJobs,
+    updateJob,
+    deleteJob
+};

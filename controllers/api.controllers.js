@@ -22,16 +22,6 @@ const postLogout = async (req, res) => {
 
 }
 
-const listJobsController = async (req, res) => {
-    let jobs;
-    try {
-        jobs = await jobService.listJobs();
-        res.status(200).json(jobs); // [] con los jobs encontrados
-    } catch (error) {
-        res.status(500).json({ error: error.message });
-    }
-};
-
 const createJobController = async (req, res) => {
     // Validate request
     const errors = validationResult(req);
@@ -43,8 +33,7 @@ const createJobController = async (req, res) => {
         try {
             const response = await jobService.createJob(title, description, skills, client_location, url, source, status);
             res.status(201).json({
-                "items_created": response,
-                data: req.body
+                "items_created": response
             });
         } catch (error) {
             res.status(500).json({ mensaje: error.message });
@@ -53,8 +42,8 @@ const createJobController = async (req, res) => {
         res.status(400).json({ error: "Missing fields" });
     }
 };
-
-//comprobacion postman
+// Comprobacion Postman
+// POST http://localhost:3000/api/jobs
 // {
 //     "title": "Experienced Virtual Assistant for Creating Shopify Landing/Product Pages",
 //     "description": "We are looking for an experienced virtual assistant who can help us create stunning landing and product pages on Shopify for our multiple e-commerce brands.",
@@ -62,8 +51,20 @@ const createJobController = async (req, res) => {
 //     "client_location": "United States",
 //     "url": "www.google.com",
 //     "source": "scraping",
-//     "status": false
+//     "status": true
 // }
+
+const readJobsController = async (req, res) => {
+    let jobs;
+    try {
+        jobs = await jobService.readJobs();
+        res.status(200).json(jobs); // [] con los jobs encontrados
+    } catch (error) {
+        res.status(500).json({ error: error.message });
+    }
+};
+// Comprobacion Postman
+// GET http://localhost:3000/api/jobs
 
 const updateJobController = async (req, res) => {
     // Validate request
@@ -80,9 +81,8 @@ const updateJobController = async (req, res) => {
         res.status(500).json({ error: error.message });
     }
 };
-//comprobacion postman
-//http://localhost:3000/api/jobs?title=Experienced Virtual Assistant for Creating Shopify Landing/Product Pages
-
+// Comprobacion Postman
+// PUT http://localhost:3000/api/jobs?title=Experienced Virtual Assistant for Creating Shopify Landing/Product Pages
 // {
 //     "title": "Experienced Virtual Assistant for Creating Shopify Landing/Product Pages",
 //     "description": "We are looking for an experienced virtual assistant who can help us create stunning landing and product pages on Shopify for our multiple e-commerce brands.",
@@ -107,6 +107,9 @@ const deleteJobController = async (req, res) => {
         res.status(500).json({ error: "Error from database" });
     }
 };
+// Comprobacion Postman
+// DELETE http://localhost:3000/api/jobs?title=Experienced Virtual Assistant for Creating Shopify Landing/Product Pages
+
 
 const postFavorites = async (req, res) => {
 
@@ -130,8 +133,8 @@ module.exports = {
     // deleteUser,
     // postLogin,
     // postLogout,
-    listJobsController,
     createJobController,
+    readJobsController,
     updateJobController,
     deleteJobController,
     // postFavorites,

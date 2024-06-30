@@ -21,10 +21,7 @@ const validateCreateJob = [
         .isString().withMessage("Source should be a string"),
     body("status")
         .exists().withMessage("Status is required")
-];
-
-const validateDeleteJob = [
-    query("title").notEmpty().withMessage("Title should exist to delete a job")
+        .isBoolean({ strict: true }).withMessage("Status has to be boolean")
 ];
 
 const validateUpdateJob = [
@@ -51,11 +48,16 @@ const validateUpdateJob = [
         .isString().withMessage("Source should be a string"),
     body("status")
         .exists().withMessage("Status is required")
+        .isBoolean({ strict: true }).withMessage("Status has to be boolean")
+];
+
+const validateDeleteJob = [
+    query("title").notEmpty().withMessage("Title should exist to delete a job")
 ];
 
 module.exports = {
     validateCreateJob,
-    validateDeleteJob,
-    validateUpdateJob
+    validateUpdateJob,
+    validateDeleteJob
 };
 
