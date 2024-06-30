@@ -38,7 +38,25 @@ VALUES
 
 -----------------------------------------------------------------------------------------------------------------------
 
--- Ejemplos de Queries
+-- CRUD users
+-- CREATE
+INSERT INTO users(name, email, password, role)
+VALUES ('Prueba', 'prueba@gmail.com', '123456', 'user');
+-- READ
+SELECT *
+FROM users
+-- UPDATE
+UPDATE users
+SET name = 'Prueba2',
+email = 'prueba2@gmail.com',
+password = '123456123456',
+role = 'user'
+WHERE email = 'prueba@gmail.com';
+-- DELETE
+DELETE FROM users
+WHERE email = 'prueba2@gmail.com'
+
+-- Pruebas de Queries
 SELECT * FROM public.users
 
 SELECT * FROM public.favorites
