@@ -101,7 +101,7 @@ const scrap = async (url1, url2) => {
         const tmpurls2 = await page2.$$eval('a[class="JobSearchCard-primary-heading-link"]', data => data.map(a => a.href))
         const urls2 = await tmpurls2.filter((link, index) => { return tmpurls2.indexOf(link) === index })
         console.log("url capuradas", urls2)
-        const urlsSlice2 = urls2.slice(0, 3);
+        const urlsSlice2 = urls2.slice(0, 0);
 
         console.log(`${urlsSlice2.length} links encontrados`);
         console.log(urlsSlice2);

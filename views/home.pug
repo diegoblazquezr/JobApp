@@ -5,29 +5,33 @@ html(lang="en")
         meta(http-equiv="X-UA-Compatible", content="IE=edge")
         meta(name="viewport", content="width=device-width, initial-scale=1.0")
         link(rel="stylesheet", href="/css/styles.css")
+        link(rel='preconnect' href='https://fonts.googleapis.com')
+        link(rel='preconnect' href='https://fonts.gstatic.com' crossorigin='')
+        link(href='https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&display=swap' rel='stylesheet')
         title Home
     body
         include ./header.pug
         main
             h1 JobApp
             section
-                h3 Encuentra tu próximo proyecto freelance
+                h3#mainSubtitle Find your next Freelance Project
                 article
-                label(for="searchTitle") Busca por título
-                    input#searchTitle(type='text' name='searchTitle' placeholder='Busca por título...')
-                section#jobsContainer
-                    if jobs.length
-                        each job in jobs
-                            article(data-jobTitle=`${job.title}`)
-                                p Title: #{job.title}
-                                p Description: #{job.description}
-                                p Skills:
+                label(for="searchTitle")
+                    input#searchTitle(type='text' name='searchTitle' placeholder='Search by title...')
+            section#jobsContainer
+                if jobs.length
+                    each job in jobs
+                        article#job(data-jobTitle=`${job.title}`)
+                            h3#jobTitle #{job.title}
+                            p#description #{job.description}
+                            p#skillsTitle Skills:
+                            section#skills
                                 each skill in job.skills
-                                    div
-                                        p #{skill}
-                                p Client Location: #{job.clientLocation}
-                                a(href=`${job.url}` target='_blank')
-                                    button(type=button) Visit Offer                              
+                                    p #{skill}
+                            p#locationTitle Client Location:
+                            p#location #{job.clientLocation}
+                            a(href=`${job.url}` target='_blank')
+                                button#jobButton(type=button) Visit Offer                              
 
                 
         include ./footer.pug

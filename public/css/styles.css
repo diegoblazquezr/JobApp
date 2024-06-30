@@ -1,7 +1,7 @@
 * {
     margin: 0;
     padding: 0;
-    font-family: Arial;
+    font-family: 'Lato', sans-serif;
     box-sizing: border-box;
 }
 
@@ -11,6 +11,8 @@ body {
     flex-direction: column;
     overflow-x: hidden;
 }
+
+/* **********************HEADER MENU******************************** */
 
 header {
     background-color: rgb(0, 0, 100);
@@ -69,9 +71,21 @@ header a {
     background-color: white;
 }
 
-/* ************************** SIGN UP & LOG IN ************************** */
+/* **********************END OF HEADER MENU******************************** */
 
-#formSignUpContainer, #formLogInContainer {
+main {
+    flex: 1;
+    padding: 20px 5% 30px 5%;
+    color: #262626;
+    background-color: #fcfcfc;
+}
+
+#mainSubtitle {
+    display: block;
+    text-align: center;
+}
+
+#job, #formSignUpContainer, #formLogInContainer {
     display: flex;
     flex-direction: column;
     padding: 10px;
@@ -81,18 +95,73 @@ header a {
     margin: 20px 10px;
 }
 
-.form div {
-    margin-bottom: 10px;
-}
-
-.form label {
+#jobTitle {
     display: block;
-    margin-bottom: 5px;
+    text-align: center;
+    margin: 5px;
 }
 
-.form input {
+#description {
+    display: flex;
+    flex-direction: column;
+    margin: 5px;
+}
+
+#skillsTitle {
+    display: flex;
+    font-weight: bold;
+    justify-content: center;
+    margin-top: 5px;
+}
+
+#skills {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin: 5px;
+}
+
+#skills p {
+    margin: 0 10px 0 10px;
+}
+
+#locationTitle {
+    display: flex;
+    font-weight: bold;
+    justify-content: center;
+    margin: 5px;
+}
+
+#location {
+    display: flex;
+    justify-content: center;
+    margin: 5px;
+}
+
+#form label {
+    display: block;
+    margin: 10px;
+}
+
+#searchTitle {
+    display: flex;
+    flex-direction: column;
+    justify-items: center;
+    padding: 10px;
+    margin: 5px auto;
+    width: 80%; 
+    max-width: 600px; 
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-shadow: 2px 3px 6px #00000017;
+}
+
+#form input {
+    display: block;
+    align-items: center;
     width: 100%;
-    padding: 8px;
+    padding: 10px;
+    margin: 5px;
     border: 1px solid #ccc;
     border-radius: 4px;
     box-shadow: 2px 3px 6px #00000017;
@@ -109,27 +178,32 @@ input.error {
 }
 
 button {
-    padding: 10px;
+    padding: 6px 25px 6px 25px;
     border: transparent;
     border-radius: 5px;
     background-color: rgb(0, 0, 100);
     color: white;
-    box-shadow: 2px 3px 6px #00000017;
     transition: 0.4s ease all;
     cursor: pointer;
 }
 
 button:hover {
-    background-color: rgb(0, 0, 170);
+    background-color: rgb(50, 50, 184);
+}
+
+#jobButton {
+    display: block;
+    width: 70%;
+    margin: 10px auto;
 }
 
 #signUpButton, #logInButton {
     display: block;
     margin: 10px auto;
-    box-shadow: 2px 3px 6px #00000017;
 }
 
 #googleSignInButton {
+    display: block;
     width: 100%;
     border-radius: 4px;
     box-shadow: 2px 3px 6px #00000017;
@@ -147,13 +221,6 @@ button:hover {
 
 #formLogInContainer a:hover {
     text-decoration: underline;
-}
-
-/* **************************END OF SIGN UP & LOG IN ************************** */
-
-main {
-    flex: 1;
-    padding: 20px 5% 30px 5%;
 }
 
 footer {
@@ -180,27 +247,11 @@ footer h4 {
 /* @media (max-width: 1024px) {} */
 
 @media only screen and (min-width: 480px) {
-
+    
 }
 
 @media only screen and (min-width: 600px) {
-    .form div {
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-    }
-    .form label {
-        flex: 1;
-    }
-
-    .form input {
-        flex: 2;
-    }
-
-    #formSignUpContainer, #formLogInContainer {
-        max-width: 600px;
-        margin: 20px auto;
-    }
+   
 }
 
 @media only screen and (max-width: 768px) {
@@ -254,24 +305,10 @@ footer h4 {
     .hamburger {
         display: none;
     }
-
-    #formSignUpContainer, #formLogInContainer {
-        flex-direction: row;
-        justify-content: space-between;
-    }
-
-    .form {
-        flex: 1;
-        margin: 0 10px;
-    }
 }
 
 @media only screen and (min-width: 1200px) {
     .navbar {
         padding: 0 10%;
-    }
-
-    #formSignUpContainer, #formLogInContainer {
-        max-width: 800px;
     }
 }
