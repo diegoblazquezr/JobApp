@@ -1,6 +1,21 @@
 // General Variables
 const fragment = document.createDocumentFragment();
 
+//**** SCRIPT HEADER.PUG **** */
+
+const hamburger = document.querySelector(".hamburger");
+const navMenu = document.querySelector(".nav-menu");
+
+hamburger.addEventListener("click", () => {
+    hamburger.classList.toggle("active");
+    navMenu.classList.toggle("active");
+})
+
+document.querySelectorAll(".nav-link").forEach(n => n.addEventListener("click", () => {
+    hamburger.classList.remove("active");
+    navMenu.classList.remove("active");
+}))
+
 //**** SCRIPT HOME.PUG **** */
 
 // Filtro por título - home.pug

@@ -2,17 +2,84 @@
     margin: 0;
     padding: 0;
     font-family: Arial;
+    box-sizing: border-box;
+}
+
+body {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    overflow-x: hidden;
+}
+
+header {
+    background-color: rgb(0, 0, 100);
+    color: white;
+    width: 100%;
+}
+
+header li {
+    list-style: none;
+}
+
+header a {
+    color: white;
+    text-decoration: none;
+}
+
+.navbar {
+    min-height: 70px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 5% 0 5%;
+}
+
+.nav-menu {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 20px;
+}
+
+.nav-brand {
+    font-size: 1.2em;
+}
+
+.nav-link {
+    cursor: pointer;
+}
+
+.nav-link:hover {
+    text-decoration: underline;
+}
+
+.hamburger {
+    display: none;
+    cursor: pointer;
+}
+
+.bar {
+    display: block;
+    width: 25px;
+    height: 3px;
+    margin: 5px auto;
+    -webkit-transition: all 0.3s ease;
+    transition: all 0.3s ease;
+    background-color: white;
 }
 
 main {
-    min-height: 100vh;
+    flex: 1;
+    padding: 20px 5% 30px 5%;
+
 }
 
 footer {
     background-color: rgb(0, 0, 100);
     color: white;
     height: fit-content;
-    padding: 15px 5px 20px 5px;
+    padding: 15px 15px 20px 15px;
 }
 
 footer h4 {
@@ -27,4 +94,62 @@ footer h4 {
     margin-top: 5px;
     gap: 0 15px;
     text-align: center;
+}
+
+/* @media (max-width: 1024px) {} */
+
+@media only screen and (min-width: 480px) {
+
+}
+
+@media only screen and (min-width: 600px) {
+
+}
+
+@media only screen and (max-width: 768px) {
+    .hamburger {
+        display: block;
+    }
+
+    .hamburger.active .bar:nth-child(2) {
+        opacity: 0;
+    }
+
+    .hamburger.active .bar:nth-child(1) {
+        transform: translateY(8px) rotate(45deg);
+    }
+
+    .hamburger.active .bar:nth-child(3) {
+        transform: translateY(-8px) rotate(-45deg);
+    }
+
+    .nav-menu {
+        position: absolute;
+        right: -100%;
+        top: 70px;
+        gap: 0;
+        display: flex;
+        flex-direction: column;
+        background-color: rgba(0, 0, 100, 0.8);
+        backdrop-filter: blur(10px);
+        width: 100%;
+        transition: 0.3s;
+        padding: 20px 0 0 0;
+    }
+
+    .nav-item {
+        margin: 0 auto 20px auto;
+    }
+
+    .nav-menu.active {
+        right: 0;
+    }
+}
+
+@media only screen and (min-width: 992px) {
+
+}
+
+@media only screen and (min-width: 1200px) {
+
 }
