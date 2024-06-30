@@ -69,10 +69,91 @@ header a {
     background-color: white;
 }
 
+/* ************************** SIGN UP & LOG IN ************************** */
+
+#formSignUpContainer, #formLogInContainer {
+    display: flex;
+    flex-direction: column;
+    padding: 10px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    box-shadow: 2px 3px 6px #00000017;
+    margin: 20px 10px;
+}
+
+.form div {
+    margin-bottom: 10px;
+}
+
+.form label {
+    display: block;
+    margin-bottom: 5px;
+}
+
+.form input {
+    width: 100%;
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-shadow: 2px 3px 6px #00000017;
+}
+
+input.error {
+    border-color: red;
+}
+
+#password-instructions {
+    font-size: 0.9em;
+    color: #555;
+    display: none;
+}
+
+button {
+    padding: 10px;
+    border: transparent;
+    border-radius: 5px;
+    background-color: rgb(0, 0, 100);
+    color: white;
+    box-shadow: 2px 3px 6px #00000017;
+    transition: 0.4s ease all;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: rgb(0, 0, 170);
+}
+
+#signUpButton, #logInButton {
+    display: block;
+    margin: 10px auto;
+    box-shadow: 2px 3px 6px #00000017;
+}
+
+#googleSignInButton {
+    width: 100%;
+    border-radius: 4px;
+    box-shadow: 2px 3px 6px #00000017;
+}
+
+#formLogInContainer p {
+    text-align: left;
+    margin-top: 10px;
+}
+
+#formLogInContainer a {
+    color: rgb(0, 0, 100);
+    text-decoration: none;
+}
+
+#formLogInContainer a:hover {
+    text-decoration: underline;
+}
+
+/* **************************END OF SIGN UP & LOG IN ************************** */
+
 main {
     flex: 1;
     padding: 20px 5% 30px 5%;
-
 }
 
 footer {
@@ -103,7 +184,23 @@ footer h4 {
 }
 
 @media only screen and (min-width: 600px) {
+    .form div {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+    .form label {
+        flex: 1;
+    }
 
+    .form input {
+        flex: 2;
+    }
+
+    #formSignUpContainer, #formLogInContainer {
+        max-width: 600px;
+        margin: 20px auto;
+    }
 }
 
 @media only screen and (max-width: 768px) {
@@ -147,9 +244,34 @@ footer h4 {
 }
 
 @media only screen and (min-width: 992px) {
+    .nav-menu {
+        display: flex;
+        flex-direction: row;
+        position: static;
+        background-color: transparent;
+    }
 
+    .hamburger {
+        display: none;
+    }
+
+    #formSignUpContainer, #formLogInContainer {
+        flex-direction: row;
+        justify-content: space-between;
+    }
+
+    .form {
+        flex: 1;
+        margin: 0 10px;
+    }
 }
 
 @media only screen and (min-width: 1200px) {
+    .navbar {
+        padding: 0 10%;
+    }
 
+    #formSignUpContainer, #formLogInContainer {
+        max-width: 800px;
+    }
 }

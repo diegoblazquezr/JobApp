@@ -9,13 +9,15 @@ html(lang="en")
     body
         include ./header.pug
         main
-            h1 Login
-            section#formLoginContainer
-                form(action="/login" method="POST")
+            h3 Login
+            section#formLogInContainer
+                form.form(action="/" method="POST")
                     label(for="email") Email:
                         input#email(type="email" name="email" required)
                     label(for="password") Password:
                         input#password(type="password" name="password" required)
-                    button(type="submit") Login
+                    button#logInButton(type="submit") Login
+                    p#registerP Not registered yet?
+                    a(href='/signup') Sign up here
         include ./footer.pug
         script(src="/js/scripts.js")
