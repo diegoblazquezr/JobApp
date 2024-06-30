@@ -1,2 +1,21 @@
-header
-    h2 Login
+doctype html
+html(lang="en")
+    head
+        meta(charset="UTF-8")
+        meta(http-equiv="X-UA-Compatible", content="IE=edge")
+        meta(name="viewport", content="width=device-width, initial-scale=1.0")
+        link(rel="stylesheet", href="/css/styles.css")
+        title Login
+    body
+        include ./header.pug
+        main
+            h1 Login
+            section#formLoginContainer
+                form(action="/login" method="POST")
+                    label(for="email") Email:
+                        input#email(type="email" name="email" required)
+                    label(for="password") Password:
+                        input#password(type="password" name="password" required)
+                    button(type="submit") Login
+        include ./footer.pug
+        script(src="/js/scripts.js")
