@@ -21,7 +21,7 @@ app.use(express.json()); // Habilito recepción de JSON en servidor
 
 // API Routes
 app.use('/', webRoutes);
-app.use('/api/', apiRoutes);
+app.use('/api', apiRoutes);
 
 app.listen(port, () => {
     console.log(`Job App listening on http://localhost:${port}`);

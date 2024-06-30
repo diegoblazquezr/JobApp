@@ -24,8 +24,13 @@ router.put('/jobs', validateUpdateJob, apiController.updateJobController);
 // DELETE http://localhost:3000/api/jobs?title='Twitter embed from website shared to twitter'
 router.delete('/jobs', validateDeleteJob, apiController.deleteJobController);
 
-// router.post("/api/favorites", apiController.postFavorites);
-// router.delete("/api/favorites", apiController.deleteFavorites);
+// POST http://localhost:3000/api/favorites
+router.post("/favorites", apiController.createFavoriteController);
+// GET http://localhost:3000/api/favorites
+router.get("/favorites", apiController.readFavoritesController);
+// DELETE http://localhost:3000/api/favorites?user_id=4&job_id=2
+router.delete("/favorites", apiController.deleteFavoriteController);
+
 // router.get("/recoverpassword", apiController.recoverPassword);
 // router.get("/restorepassword", apiController.restorePassword);
 
