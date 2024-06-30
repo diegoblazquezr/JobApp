@@ -2,6 +2,7 @@ const apiController = require('../controllers/api.controllers');
 const router = require('express').Router();
 const { validateCreateJob, validateUpdateJob, validateDeleteJob } = require("../validators/jobs.validators");
 const { validateCreateUser, validateUpdateUser, validateDeleteUser } = require("../validators/users.validators");
+const { validateCreateFavorite, validateDeleteFavorite } = require("../validators/favorites.validators");
 
 // POST http://localhost:3000/api/user
 router.post("/user", validateCreateUser, apiController.createUserController);
@@ -25,11 +26,11 @@ router.put('/jobs', validateUpdateJob, apiController.updateJobController);
 router.delete('/jobs', validateDeleteJob, apiController.deleteJobController);
 
 // POST http://localhost:3000/api/favorites
-router.post("/favorites", apiController.createFavoriteController);
+router.post("/favorites", validateCreateFavorite, apiController.createFavoriteController);
 // GET http://localhost:3000/api/favorites
 router.get("/favorites", apiController.readFavoritesController);
 // DELETE http://localhost:3000/api/favorites?user_id=4&job_id=2
-router.delete("/favorites", apiController.deleteFavoriteController);
+router.delete("/favorites", validateDeleteFavorite, apiController.deleteFavoriteController);
 
 // router.get("/recoverpassword", apiController.recoverPassword);
 // router.get("/restorepassword", apiController.restorePassword);

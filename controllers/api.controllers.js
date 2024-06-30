@@ -198,10 +198,10 @@ const deleteJobController = async (req, res) => {
 
 
 const createFavoriteController = async (req, res) => {
-    // const errors = validationResult(req);
-    // if (!errors.isEmpty()) {
-    //     return res.status(400).json({ errors: errors.array() });
-    // }
+    const errors = validationResult(req);
+    if (!errors.isEmpty()) {
+        return res.status(400).json({ errors: errors.array() });
+    }
     const newFavorite = req.body;
     if (
         "user_id" in newFavorite &&
@@ -239,10 +239,10 @@ const readFavoritesController = async (req, res) => {
 // GET http://localhost:3000/api/favorites
 
 const deleteFavoriteController = async (req, res) => {
-    // const errors = validationResult(req);
-    // if (!errors.isEmpty()) {
-    //     return res.status(400).json({ errors: errors.array() });
-    // }
+    const errors = validationResult(req);
+    if (!errors.isEmpty()) {
+        return res.status(400).json({ errors: errors.array() });
+    }
     let favorites;
     try {
         favorites = await favorite.deleteFavorite(req.query.user_id, req.query.job_id);
