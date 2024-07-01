@@ -1,7 +1,6 @@
 const jobService = require('../services/jobs.services');
 const scraper = require('../utils/scraper');
 const apiController = require('./api.controllers');
-const { validateCreateJob, validateUpdateJob, validateDeleteJob } = require("../validators/jobs.validators");
 
 const urlToptal = 'https://www.toptal.com/freelance-jobs/developers/jobs/';
 const urlFreelancer = 'https://www.freelancer.es/jobs/php_html_css_javascript_nodejs_java/?featured=true&languages=en';
@@ -9,7 +8,7 @@ const urlFreelancer = 'https://www.freelancer.es/jobs/php_html_css_javascript_no
 const getHome = async (req, res) => {
     try {
         // Obtener todos los trabajos actualizados desde la base de datos
-        let updatedJobs = await jobService.listJobs();
+        let updatedJobs = await jobService.readJobs();
         console.log('comprobando updatedJobs')
 
         res.status(200).render("home.pug", { jobs: updatedJobs });
@@ -21,7 +20,7 @@ const getHome = async (req, res) => {
 const getScraping = async (req, res) => {
     try {
         // Primero obtenemos los jobs actuales en mongodb
-        let currentJobs = await jobService.listJobs();
+        let currentJobs = await jobService.readJobs();
 
         // scraping para obtener los jobs nuevos
         console.log('Starting scraping...');
@@ -61,7 +60,7 @@ const getScraping = async (req, res) => {
         })
 
         // Obtener todos los trabajos actualizados desde la base de datos
-        let updatedJobs = await jobService.listJobs();
+        let updatedJobs = await jobService.readJobs();
         console.log('comprobando updatedJobs')
 
         res.status(200).render("home.pug", { jobs: updatedJobs });
