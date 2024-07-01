@@ -97,11 +97,11 @@ const getDashboard = async (req, res) => {
 
 module.exports = {
     getHome,
+    getScraping,
     getSignup,
     getLogin,
     getFavorites,
     getProfile,
     getUsers,
-    getDashboard,
-    getScraping
+    getDashboard
 }
