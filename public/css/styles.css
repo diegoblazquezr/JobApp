@@ -1,7 +1,7 @@
 * {
     margin: 0;
     padding: 0;
-    font-family: Arial;
+    font-family: 'Lato', sans-serif;
     box-sizing: border-box;
 }
 
@@ -11,6 +11,8 @@ body {
     flex-direction: column;
     overflow-x: hidden;
 }
+
+/* **********************HEADER MENU******************************** */
 
 header {
     background-color: rgb(0, 0, 100);
@@ -69,10 +71,157 @@ header a {
     background-color: white;
 }
 
+/* **********************END OF HEADER MENU******************************** */
+
 main {
     flex: 1;
     padding: 20px 5% 30px 5%;
+    color: #262626;
+    background-color: #fcfcfc;
+}
 
+#mainSubtitle {
+    display: block;
+    text-align: center;
+}
+
+#job, #formSignUpContainer, #formLogInContainer {
+    display: flex;
+    flex-direction: column;
+    padding: 10px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    box-shadow: 2px 3px 6px #00000017;
+    margin: 20px 10px;
+}
+
+#jobTitle {
+    display: block;
+    text-align: center;
+    margin: 5px;
+}
+
+#description {
+    display: flex;
+    flex-direction: column;
+    margin: 5px;
+}
+
+#skillsTitle {
+    display: flex;
+    font-weight: bold;
+    justify-content: center;
+    margin-top: 5px;
+}
+
+#skills {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin: 5px;
+}
+
+#skills p {
+    margin: 0 10px 0 10px;
+}
+
+#locationTitle {
+    display: flex;
+    font-weight: bold;
+    justify-content: center;
+    margin: 5px;
+}
+
+#location {
+    display: flex;
+    justify-content: center;
+    margin: 5px;
+}
+
+#formSignUp label, #formLogIn label {
+    display: block;
+    margin: 10px;
+}
+
+#searchTitle {
+    display: flex;
+    flex-direction: column;
+    justify-items: center;
+    padding: 10px;
+    margin: 5px auto;
+    width: 80%; 
+    max-width: 600px; 
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-shadow: 2px 3px 6px #00000017;
+}
+
+#formSignUp input, #formLogIn input {
+    display: block;
+    align-items: center;
+    width: 100%;
+    padding: 10px;
+    margin: 5px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-shadow: 2px 3px 6px #00000017;
+}
+
+input.error {
+    border-color: red;
+}
+
+#instructions {
+    font-size: 0.9em;
+    color: #555;
+    display: none;
+}
+
+button {
+    padding: 6px 25px 6px 25px;
+    border: transparent;
+    border-radius: 5px;
+    background-color: rgb(0, 0, 100);
+    color: white;
+    transition: 0.4s ease all;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: rgb(50, 50, 184);
+}
+
+#jobButton {
+    display: block;
+    width: 70%;
+    margin: 10px auto;
+}
+
+#signUpButton, #logInButton {
+    display: block;
+    margin: 10px auto;
+}
+
+#googleSignInButton {
+    display: block;
+    width: 100%;
+    border-radius: 4px;
+    margin: 10px auto;
+    box-shadow: 2px 3px 6px #00000017;
+}
+
+#formLogInContainer p {
+    text-align: left;
+    margin-top: 10px;
+}
+
+#formLogInContainer a {
+    color: rgb(0, 0, 100);
+    text-decoration: none;
+}
+
+#formLogInContainer a:hover {
+    text-decoration: underline;
 }
 
 footer {
@@ -99,11 +248,11 @@ footer h4 {
 /* @media (max-width: 1024px) {} */
 
 @media only screen and (min-width: 480px) {
-
+    
 }
 
 @media only screen and (min-width: 600px) {
-
+   
 }
 
 @media only screen and (max-width: 768px) {
@@ -147,9 +296,20 @@ footer h4 {
 }
 
 @media only screen and (min-width: 992px) {
+    .nav-menu {
+        display: flex;
+        flex-direction: row;
+        position: static;
+        background-color: transparent;
+    }
 
+    .hamburger {
+        display: none;
+    }
 }
 
 @media only screen and (min-width: 1200px) {
-
+    .navbar {
+        padding: 0 10%;
+    }
 }
