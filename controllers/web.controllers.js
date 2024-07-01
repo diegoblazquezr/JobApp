@@ -1,6 +1,6 @@
 const jobService = require('../services/jobs.services');
 const scraper = require('../utils/scraper');
-const apiController = require('./api.controllers');
+const apiController = require('./jobs.controllers');
 
 const urlToptal = 'https://www.toptal.com/freelance-jobs/developers/jobs/';
 const urlFreelancer = 'https://www.freelancer.es/jobs/php_html_css_javascript_nodejs_java/?featured=true&languages=en';

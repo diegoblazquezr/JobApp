@@ -10,7 +10,9 @@ app.use(morgan(':method :url :status - :response-time ms :body'));
 
 // Routes
 const webRoutes = require("./routes/web.routes");
-const apiRoutes = require("./routes/api.routes");
+const jobsRoutes = require("./routes/jobs.routes");
+const usersRoutes = require("./routes/users.routes");
+const favoritesRoutes = require("./routes/favorites.routes");
 
 // View engine setup
 app.set('view engine', 'pug');
@@ -21,7 +23,9 @@ app.use(express.json()); // Habilito recepción de JSON en servidor
 
 // API Routes
 app.use('/', webRoutes);
-app.use('/api', apiRoutes);
+app.use('/api/jobs', jobsRoutes);
+app.use('/api/user', usersRoutes);
+app.use('/api/favorites', favoritesRoutes);
 
 app.listen(port, () => {
     console.log(`Job App listening on http://localhost:${port}`);
