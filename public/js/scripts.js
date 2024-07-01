@@ -43,6 +43,84 @@ const updateJobList = (jobsFiltered) => {
     });
 }
 
+/**** SCRIPT SIGNUP.PUG *****/
+
+document.addEventListener('DOMContentLoaded', () => {
+    const form = document.querySelector('.form');
+    const password = document.getElementById('password');
+    const confirmPassword = document.getElementById('confirmPassword');
+    const inputs = document.querySelectorAll('input[required]');
+    const passwordInstructions = document.getElementById('instructions');
+    const passwordRegex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/;
+    passwordInstructions.style.display = 'none';
+
+    password.addEventListener('focus', function () {
+        passwordInstructions.style.display = 'block';
+    });
+
+    password.addEventListener('blur', function () {
+        passwordInstructions.style.display = 'none';
+    });
+
+    email.addEventListener('input', function () {
+        if (email.checkValidity()) {
+            email.classList.remove('error');
+        } else {
+            email.classList.add('error');
+        }
+    });
+
+    form.addEventListener('submit', function (event) {
+        let isValid = true;
+
+        inputs.forEach(input => {
+            if (!input.checkValidity()) {
+                input.classList.add('error');
+                isValid = false;
+            } else {
+                input.classList.remove('error');
+            }
+        });
+
+        if (!passwordRegex.test(password.value)) {
+            password.classList.add('error');
+            isValid = false;
+        } else {
+            password.classList.remove('error');
+        }
+
+        if (password.value !== confirmPassword.value) {
+            confirmPassword.classList.add('error');
+            confirmPassword.setCustomValidity('Passwords do not match');
+            isValid = false;
+        } else {
+            confirmPassword.classList.remove('error');
+            confirmPassword.setCustomValidity('');
+        }
+
+        if (!isValid) {
+            event.preventDefault();
+        }
+    });
+
+    window.onload = function() {
+        google.accounts.id.initialize({
+            client_id: 'YOUR_GOOGLE_CLIENT_ID',
+            callback: handleCredentialResponse
+        });
+        google.accounts.id.renderButton(
+            document.getElementById('googleSignInButton'),
+            { theme: 'outline', size: 'large' } // opciones de personalización del botón
+        );
+        google.accounts.id.prompt(); // muestra la ventana emergente de inicio de sesión de Google
+    };
+    
+    function handleCredentialResponse(response) {
+        console.log("Encoded JWT ID token: " + response.credential);
+        // Aquí puedes enviar el token al servidor o manejarlo como necesites
+    }
+});
+
 //**** SCRIPT FOOTER.PUG **** */
 
 // Function that randomly shuffles the contents of an array
