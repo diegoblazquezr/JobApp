@@ -138,7 +138,7 @@ main {
     margin: 5px;
 }
 
-#formSignUp label {
+#formSignUp label, #formLogIn label {
     display: block;
     margin: 10px;
 }
@@ -156,7 +156,7 @@ main {
     box-shadow: 2px 3px 6px #00000017;
 }
 
-#formSignUp input {
+#formSignUp input, #formLogIn input {
     display: block;
     align-items: center;
     width: 100%;
