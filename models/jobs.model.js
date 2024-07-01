@@ -12,7 +12,7 @@ const objectSchema = {
         required: true
     },
     skills: {
-        type: String,
+        type: Array, 
         required: true
     },
     client_location: {

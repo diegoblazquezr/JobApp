@@ -9,7 +9,7 @@ const validateCreateJob = [
         .isString().withMessage("Description should be a string"),
     body("skills")
         .exists().withMessage("Skills are required")
-        .isString().withMessage("Skills should be a string"),
+        .isArray().withMessage("Skills should be a array"),
     body("client_location")
         .exists().withMessage("Location is required")
         .isString().withMessage("Location should be a string"),
@@ -29,25 +29,25 @@ const validateUpdateJob = [
         .exists().withMessage("Old title is required")
         .isString().withMessage("Old title should be a string"),
     body("title")
-        .exists().withMessage("Title of job is required")
+        .optional()
         .isString().withMessage("Title should be a string"),
     body("description")
-        .exists().withMessage("Job description is required")
+        .optional()
         .isString().withMessage("Description should be a string"),
     body("skills")
-        .exists().withMessage("Skills required")
-        .isString().withMessage("Skills should be a string"),
+        .optional()
+        .isArray().withMessage("Skills should be a string"),
     body("client_location")
-        .exists().withMessage("Location is required")
+        .optional()
         .isString().withMessage("Location should be a string"),
     body("url")
-        .exists().withMessage("URL is required")
+        .optional()
         .isString().withMessage("URL should be a string"),
     body("source")
-        .exists().withMessage("Source is required")
+        .optional()
         .isString().withMessage("Source should be a string"),
     body("status")
-        .exists().withMessage("Status is required")
+        .optional()
         .isBoolean({ strict: true }).withMessage("Status has to be boolean")
 ];
 
@@ -60,4 +60,3 @@ module.exports = {
     validateUpdateJob,
     validateDeleteJob
 };
-
