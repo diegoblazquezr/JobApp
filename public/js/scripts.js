@@ -90,6 +90,10 @@ document.addEventListener('submit', (event) => {
             .then(data => {
                 console.log('Found user: ', data);
 
+                if (data.length <= 0) {
+                    return alert("Incorrect user or password");
+                }
+
                 fetch('http://localhost:3000/api/user/login', {
                     method: 'POST',
                     headers: {
